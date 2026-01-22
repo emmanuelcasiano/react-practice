@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+    const [height, setHeight] = useState("");
+    const [weight, setWeight] = useState("");
+    const [result, setResult] = useState("");
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    const calculateBMI = () => {
+        if (!height || !weight) {
+            setResult("Please enter both height and weight!");
+            return;
+        }
 
-export default App
+        const heightInMeters = height / 100;
+        const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(1);
+
+        let category = "";
+        if (bmi < 18.5) category = "Underweight";
+        else if (bmi < 25) category = "Normal Weight";
+        else if (bmi < 30) category = "Overweight";
+        else category = "Obese";
+
+        setResult(`Your BMI is ${bmi} : You are ${category}`);
+    };
+    return (
+        <div>
+            <div className="container">
+                {/* Heading */}
+                <h1>BMI Calculator</h1>
+
+                {/* Height */}
+                <label htmlFor="height">Height (cm)</label>
+                <input type="text" id="height" placeholder="e.g. 170" value={height} onChange={(e) => setHeight(e.target.value)} />
+
+                {/* Weight */}
+                <label htmlFor="weight">Weight (kg)</label>
+                <input type="number" id="weight" placeholder="e.g. 65" value={weight} onChange={(e) => setWeight(e.target.value)} />
+
+                {/* Btn */}
+                <button onClick={calculateBMI}>Calculate</button>
+
+                {/* Result */}
+                <div className="result">{result}</div>
+            </div>
+        </div>
+    );
+};
+
+export default App;
