@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root {
+    --bg-color: #233040;
+    --text-color: #d9e4e9;
+    --done-color: #93a2ad;
+    --primary-color: #31415c;
+    --blue-color: #2b6efd;
+}
+
+body {
+    font-family: "Roboto";
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 600px;
+    /* background-color: tomato; */
+}
+
+.container .task-header h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.container .task-form {
+    display: flex;
+    width: 100%;
+    gap: 5px;
+}
+
+.container .task-form input {
+    padding: 18px;
+    width: 90%;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    outline: none;
+}
+
+.container .task-form button {
+    padding: 15px;
+    width: 10%;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--blue-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.container .task-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.container .task-list li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    padding: 12px 15px;
+    border-radius: 4px;
+    gap: 8px;
+}
+
+.container .task-list span {
+    font-size: 14px;
+    flex: 1;
+}
+
+.container .task-list span.done {
+    text-decoration: line-through;
+    color: var(--done-color);
+}
+
+.container .task-list .task-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+}
+
+.container .task-list .task-btns button {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.container .task-list .task-btns .delete-btn {
+    /* color: tomato; */
+}
+
+.container .task-list .task-btns .done-btn {
+}
+
+.clear-all-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#clear-all {
+    width: 100%;
+    display: flex;
+    padding: 12px;
+    background-color: tomato;
+    color: var(--text-color);
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+}
