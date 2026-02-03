@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiCircle } from "react-icons/bi";
 import { BiChevronDownCircle } from "react-icons/bi";
 import { BiSolidTrash } from "react-icons/bi";
 
 const App = () => {
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState(() => {
+        const savedTasks = localStorage.getItem("tasks");
+        return savedTasks ? JSON.parse(savedTasks) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }, [tasks]);
+
     const [taskInput, setTaskInput] = useState("");
 
     // Add new task
